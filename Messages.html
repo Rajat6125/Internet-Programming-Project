@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="logoim.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="example.css" media=”screen” />
+    <title>Kunjal: Messages</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family:tahoma;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url(w.jpg) no-repeat;
+            background-size:cover;
+            background-position:center;
+        }
+        header{
+            position:fixed;
+            top:0;
+            left:0;
+            height:100%;
+            width:80px;
+            padding: 20px 100px;
+            background: rgba(2, 2, 40, 0.752);
+            /* display: flex; */
+            /* justify-content: space-between; */
+            align-items: center;
+            z-index: 99;
+        }
+        header.navigation{
+            position: fixed;
+            left:10px;
+            color: white;
+            text-decoration: none;
+        }
+        .navigation{left:10px;
+            color: white;
+            text-decoration: none;}
+        
+        .list{
+            position: absolute;
+            left: 0px;
+            list-style: none;
+            color: white;
+            
+        }
+        .navbar{
+            position: relative;
+            left:10px;
+            font-size: 17px;
+            line-height: 22px;
+            width:100%;
+        }
+      
+        .navbar a{
+            text-decoration: none;
+            color: white;
+            
+        }
+        .navbar a:hover{
+            color:yellow;
+        }
+        .log{
+            position: fixed;
+            bottom: 20px;
+        }
+        
+        .sign .btnLogin-popup{
+            width:100px;
+            height: 50px;
+            background:transparent;
+            border:2px solid #fbfbfb;
+            outline: none;
+            border-radius: 6px;
+            cursor:pointer;
+            font-size:1.1em;
+            color:#fff;
+            font-weight: 500;
+            transition: .5s;
+            padding-left: 0%;
+            /* position: relative;
+            font-size: 1.1em;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500; */
+
+
+        }
+        .sign .btnLogin-popup:hover{
+            background: #fff;
+            color:#162938;
+        }
+        .content{
+            display: flex;
+            gap: 400px;
+        }
+        .mymess{
+            background-color: pink;
+            height: 700px;
+            width: 500px;
+            overflow: auto;
+            background: transparent;
+            backdrop-filter:blur(20px);
+            border: 1px black solid;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 10px;
+            position: absolute;
+            top:25px;
+            left:280px;
+        }
+        .mymess::-webkit-scrollbar{
+            display: none;
+        }
+
+        .main{
+            display: flex;
+            padding: 5px;
+        }
+        .logo{
+            font-size: 40px;
+        }
+        span{
+            margin-left: 3px;
+            font-size: 18px;
+            font-weight: 900;
+        }
+        .message{
+            font-family: batang;
+            margin-left: 10px;
+        }
+        .date{
+            font-size: 10px;
+            display: inline;
+        }
+        .chat{
+            position: fixed;
+            right:10px;
+            top:20px;
+        }
+        .mymesss{
+            background-color: rgb(148, 253, 0);
+            height: 500px;
+            width: 600px;
+            overflow: auto;
+            background: transparent;
+            backdrop-filter:blur(20px);
+            border: 1px black solid;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 20px;
+            position: absolute;
+            /* top:25px; */
+            right:30px;
+            bottom:30px;
+        }
+        
+        .mymesss::-webkit-scrollbar{
+            display: none;}
+        .form-box{
+            width: 100%;
+            padding-left:40px;
+            padding-right:40px;
+        }
+        .form-box h2{
+            font-size: 2em;
+            color: black;
+            text-align: center;
+        }
+        .input-box{
+            position:relative;
+            width: 100%;
+            height:50px;
+            border-bottom: 2px solid black;
+            margin:30px 0;
+        }
+        .input-box label{
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            font-size:1em;
+            color:black;
+            font-weight: 500;
+            pointer-events: none;
+            transition: .5s;
+        }
+        .input-box input:focus~label,
+        .input-box input:valid~label{
+            top:5px;
+        }
+        .input-box input{
+            width:100%;
+            height:100%;
+            background: transparent;
+            border:none;
+            outline:none;
+            font-size: 1em;
+            color:black;
+            font-weight: 600;
+            padding:0 35px 0 5px ;
+        }
+        .input-box .icon{
+            position:absolute;
+            right: 8px;
+            font-size:1.2em;
+            color:black;
+            line-height:57px;
+        }
+        .remember-forget{
+            font-size: .9em;
+            color:black;
+            font-weight: 500;
+            margin:-15px 0 15px;
+            display: flex;
+            justify-content: space-between;
+
+        }
+        .remember-forget label input{
+            accent-color: black;
+            margin-right: 3px;
+
+        }
+        .remember-forget a{
+            color: #000000;
+            text-decoration: none;
+        }
+        .remember-forget a:hover{
+            text-decoration: underline;
+        }
+        select{
+            width:100%;
+            height:40px;
+
+        }
+        .mess textarea{
+            width: 100%;
+            height:100px;
+        }
+        textarea{
+            background-color: rgba(0, 0, 0, 0);
+            border-radius: 9px;
+            color:black;
+            padding: 10px;
+            border: none;
+            font-family: tahoma;
+            font-weight: 100;
+        }
+        textarea::placeholder{
+            color: black;
+            font-family: tahoma;
+            font-weight: 100;
+        }
+        .mymesss button{
+            width: 100%;
+            height:40px;
+            font-family: tahoma;
+            font-weight: 700;
+            color: red;
+        }
+        .extra{
+            background-color: rgb(148, 253, 0);
+            height: 150px;
+            width: 600px;
+            overflow: auto;
+            background: transparent;
+            backdrop-filter:blur(20px);
+            border: 1px black solid;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+            border-radius: 10px;
+            /* padding: 20px; */
+            position: absolute;
+            top:30px;
+            right:30px;
+            
+
+        }
+        td{
+            font-size: 20px;
+            background-color: ;
+        }
+        .extra h2{
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navigation">
+            <div class="list">
+            <h2 class="logo"><img src="logo.png" width="200px"></h2><br><br>
+            <div class="navbar"><ul>
+            <li><a href="UserHome.html"><i class='bx bx-home-alt'></i>  Home</a>                  </li>
+        <br><li><a href="Explore.html"><i class='bx bx-photo-album'></i>   Explore</a>       </li>
+        <br><li><b><a href="Messages.html"><i class='bx bx-message-edit'></i>  Messages</a> </b>     </li>
+        <br><li><a href="Notification.html"><i class='bx bx-heart' ></i>    Notification</a>           </li>
+        <br><li><a href="User.html"><i class='bx bx-user-circle' ></i>  Profile</a>            </li>
+        <br><li><a href="Upload.html"><i class='bx bx-paper-plane' ></i>  Upload</a>         </li>
+            <br>
+            <div class="log"><li><a href="Home.html" class="sign"><i class='bx bx-log-out'></i>Log out</a></div>
+            </ul>
+        </nav></navbar></div>
+    </header>
+    <div class="content">
+        <div class="mymess">
+            <h1>My Messages<i class='bx bxs-message-rounded-dots' ></i></h1>
+
+            <div class="main">
+                <div class="logo"><i class='bx bxs-user' ></i></div>
+                <div class="message">
+                    <span class="Name">Mr. Bajaj
+                        <div class="date"><i class='bx bx-time' ></i>Now</div></span>
+                    <br>Hello, I love your work. I want to join you. Please allow me.</div>
+            </div>
+
+            <div class="main">
+                <div class="logo"><i class='bx bxs-like'></i></div>
+                <div class="message">
+                    <span class="Name">Mr. Ranjeet
+                        <div class="date"><i class='bx bx-time' ></i>Yesterday</div></span>
+                    <br>Capture ID:12320, I liked that clip. Be in your passion. May god Bless you.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-dislike' ></i></div>
+                <div class="message">
+                    <span class="Name">Sonali
+                        <div class="date"><i class='bx bx-time' ></i>22/10/2024</div></span>
+                    <br>Capture ID:999221 is dissappointing to me.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-trophy'></i></div>
+                <div class="message">
+                    <span class="Name">Rawat Sharma
+                        <div class="date"><i class='bx bx-time' ></i>22/10/2024</div></span>
+                    <br>I appreciate your photography and talent.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-bug' ></i></div>
+                <div class="message">
+                    <span class="Name">Shri. Kushal
+                        <div class="date"><i class='bx bx-time' ></i>22/10/2024</div></span>
+                    <br>Yey, I love your captures. We both have same interests. Would you like to follow me and exchange our resources.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-heart-circle' ></i></div>
+                <div class="message">
+                    <span class="Name">Mrs. Samanta
+                        <div class="date"><i class='bx bx-time' ></i>22/10/2024</div></span>
+                    <br>How are you? Call me whenever free.</div>
+            </div>
+            
+            <div class="main">
+                <div class="logo"><i class='bx bxs-like'></i></div>
+                <div class="message">
+                    <span class="Name">Rohan
+                        <div class="date"><i class='bx bx-time' ></i>21/10/2024</div></span>
+                    <br>Capture ID:1232760, I liked that clip. Be in your passion. May god Bless you.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-heart-circle' ></i></div>
+                <div class="message">
+                    <span class="Name">R.T Laxmi
+                        <div class="date"><i class='bx bx-time' ></i>21/10/2024</div></span>
+                    <br>I need your help. Email me.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-dislike' ></i></div>
+                <div class="message">
+                    <span class="Name">Subhalaxmi
+                        <div class="date"><i class='bx bx-time' ></i>21/10/2024</div></span>
+                    <br>Capture ID:999221 is dissappointing to me.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-like'></i></div>
+                <div class="message">
+                    <span class="Name">Mr. Ranjeet
+                        <div class="date"><i class='bx bx-time' ></i>21/10/2024</div></span>
+                    <br>Capture ID:45261, I liked that clip. Be in your passion. May god Bless you.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-trophy'></i></div>
+                <div class="message">
+                    <span class="Name">Shahil
+                        <div class="date"><i class='bx bx-time' ></i>20/10/2024</div></span>
+                    <br>I appreciate your photography and talent.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-trophy'></i></div>
+                <div class="message">
+                    <span class="Name">Daksh
+                        <div class="date"><i class='bx bx-time' ></i>20/10/2024</div></span>
+                    <br>I appreciate your photography and talent.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-like'></i></div>
+                <div class="message">
+                    <span class="Name">Mr. Ranjeet
+                        <div class="date"><i class='bx bx-time' ></i>19/10/2024</div></span>
+                    <br>Capture ID:12320, I liked that clip. Be in your passion. May god Bless you.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-like'></i></div>
+                <div class="message">
+                    <span class="Name">Shaman
+                        <div class="date"><i class='bx bx-time' ></i>19/10/2024</div></span>
+                    <br>Capture ID:12320, I liked that clip. Be in your passion. May god Bless you.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-bug' ></i></div>
+                <div class="message">
+                    <span class="Name">M.K Narender
+                        <div class="date"><i class='bx bx-time' ></i>18/10/2024</div></span>
+                    <br>Yey, I love your captures. We both have same interests. Would you like to follow me and exchange our resources.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-dislike' ></i></div>
+                <div class="message">
+                    <span class="Name">Sonali
+                        <div class="date"><i class='bx bx-time' ></i>18/10/2024</div></span>
+                    <br>Capture ID:6581475 is dissappointing to me.</div>
+            </div>
+            <div class="main">
+                <div class="logo"><i class='bx bxs-heart-circle' ></i></div>
+                <div class="message">
+                    <span class="Name">Raghav Kundra
+                        <div class="date"><i class='bx bx-time' ></i>18/10/2024</div></span>
+                    <br>Thankyou, for following me.</div>
+            </div>
+
+
+
+
+
+        </div>
+        <!-- ************************************************************************************************************************* -->
+        <div class="mymesss">
+            <h2><i class='bx bxs-pencil'></i>Send Message</h2>
+
+            <div class="main">
+                    <div class="form-box login">
+                        <form action="#">
+                            <div class="input-box">
+                                <span class="icon">
+                                    <i class='bx bxs-user-pin' ></i></span>
+                                <input type="text" required>
+                                <label>To</label>
+                            </div>
+                            <div class="input-box">
+                                <span class="icon">
+                                    <i class='bx bx-network-chart' ></i></span>
+                                <input type="text" required>
+                                <label>Pupose</label>
+                            </div>
+                             
+                            <div class="mess">
+                                <label>Message</label>
+                                <textarea placeholder="Enter message.........."></textarea>
+                            </div>
+
+                            <button type="reset">Send<i class='bx bxs-send' ></i></button>
+                        
+            </div>
+    </div>
+    </div>
+    </div>
+    
+    <div class="extra">
+        <h2><i class='bx bxs-universal-access' ></i> Message Count</h2>
+        <br>
+        <center>
+        <table>
+            <tr>
+                <td><i class='bx bxs-like'></i>: 4 Likes</td>
+                <td><i class='bx bxs-dislike' ></i>: 0 Dislikes</td>
+                <td><i class='bx bxs-heart-circle' ></i>: 3 Chats</td>
+                </tr>
+            <tr>
+                <td><i class='bx bxs-bug' ></i>: 3 Follow requests</td>
+                <td><i class='bx bxs-trophy'></i>: 5 Appreciations</td>
+                <td><i class='bx bxs-user' ></i>:  4 Join requests</td>
+            </tr>
+            
+        </table>
+        </center>
+    </div>
+    
+    
+    
+</body>
+</html>
+

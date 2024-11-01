@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="logoim.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="example.css" media=”screen” />
+    <title>Kunjal: Home</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family:tahoma;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url(00.00.jpg) no-repeat;
+            background-size:cover;
+            background-position:center;
+        }
+        header{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            padding: 20px 100px;
+            background: rgba(2, 2, 40, 0.596);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+        .logo{
+            font-size: 2em;
+            color:#fff;
+            user-select: none;
+        }
+        .navigation a{
+            position: relative;
+            font-size: 1.1em;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 40px;
+        }
+        .navigation a::after{
+            content:'';
+            position: absolute;
+            left:0;
+            bottom: -6px;
+            width:100%;
+            height:3px;
+            background:#fff;
+            border-radius: 5px;
+            transform-origin: right;
+            transform: scalex(0);
+            transition: transform .5s;
+        }
+        .navigation a:hover::after{
+            transform-origin: left;
+            transform: scalex(1);
+
+        }
+        .navigation .btnLogin-popup{
+            width:100px;
+            height: 50px;
+            background:transparent;
+            border:2px solid #fff;
+            outline: none;
+            border-radius: 6px;
+            cursor:pointer;
+            font-size:1.1em;
+            color:#fff;
+            font-weight: 500;
+            margin-left:40px;
+            transition: .5s;
+        }
+        .navigation .btnLogin-popup:hover{
+            background: #fff;
+            color:#162938;
+        }
+        .kunjal{
+            color:#fff;
+        }
+        .kunjal .heading h1{
+            font-size: 120px;
+            font-family: Book Antiqua;
+            text-align: center;
+        }
+        .kunjal .tagline p{
+            font-size: 40px;
+            font-family: vivaldi;
+            text-align: center;
+        }
+        
+        input{
+            display: none;
+        }
+        .container{
+            width:100%;
+            text-align:center ;
+        }
+        h1{
+            padding-top: 150px;
+            font-weight: normal;
+            font-size: 35px;
+            position:relative;
+            margin:40px 0;
+        }
+
+        h1::before{
+            content:'';
+            position:absolute;
+            width: 100px;
+            height:3px;
+            background-color: crimson;
+            bottom:-10px;
+            left:50%;
+            transform:translateX(-50%);
+            animation:animate 4s linear infinite;
+        }
+        @keyframes animate{
+            0%{
+                width:100px;
+            }
+            50%{
+                width:200px;
+            }
+            100%{
+                width:100px;
+            }
+        }
+        .content{
+            background-color: rgb(243,243,243);
+            width:90%;
+            margin:0 auto 20px auto;
+            height:60px;
+            display: flex;
+            align-items: center;
+            border-radius:5px;
+            box-shadow: 3px 3px 5px lightgray  ;
+    
+        }
+        
+        h3{
+            height:100%;
+            background-color: rgb(228,228,228);
+            line-height: 60px;
+            padding:0 50px;
+            color:rgb(11, 1, 44);
+        }
+        
+        h4{
+            font-size: 20px;
+            /* line-height: 60px; */
+            text-align: left;
+            color:white;
+
+        }
+        p{
+            justify-content: space-between;
+            text-align: left;
+        }
+        .content{
+            display: inline-block;
+            height:100%;
+            padding:0 5px;
+            margin:0 10px;
+            line-height:60px;
+            font-size: 18px;
+            color:grey;
+            cursor:pointer;
+            transition: color.5s;
+        }
+        .content a{
+            text-decoration: none;
+            display: inline-block;
+            height:100%;
+            padding:0 5px;
+            margin:0 10px;
+            line-height:60px;
+            font-size: 18px;
+            color:grey;
+            cursor:pointer;
+            transition: color.5s;
+            
+        }
+        
+
+        .content a:hover{
+            color:black;
+        }
+
+
+
+
+
+
+
+        .wrapper{
+            justify-content: space-around;
+            width: 90%;
+            margin:auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap:30px;
+        }
+
+
+        .card{
+            width:280px;
+            height: 360px;
+            padding:2rem 1rem;
+            background:#fff;
+            position: relative;
+            display: flex;
+            align-items:flex-end;
+            box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+            transition: 0.5s ease-in-out;
+        }
+        .card:hover{
+            transform: translateY(20px);
+
+        }
+        .card:before{
+            content:"";
+            position:absolute;
+            top:0;
+            left:0;
+            display: block;width:100%;
+            height:100%;
+            background: linear-gradient(to bottom, rgba(0,176,155,0.5),rgba(150,201,61,1));
+            z-index: 2;
+            transition: 0.5s all;
+            opacity:0;
+        }
+        .card:hover:before{
+            opacity: 1;
+        }
+        .card img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        .card .info{
+            position: relative;
+            z-index:3;
+            color:#fff;
+            opacity:0;
+            transform: translate(30px);
+            transition: 0.5s all;
+        }
+        .card:hover .info{
+            opacity: 1;
+            transform: translateY(0px);
+        }
+        .card .info h1{
+            margin:0;
+        }
+        .card .info p{
+            letter-spacing: 1px;
+            font-size: 15px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+        }
+        .card .info .btn{
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: #fff;
+            color:#000;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.4s ease-in-out;
+        }
+        .card .info .btn:hover{
+            box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" width="300px"></h2>
+        <nav class="navigation">
+            <a href="Home.html">Home</a>
+            <a href="Contacts.html">Contact</a>
+            <a href="About.html">Updates</a>
+            <a href="Login.html">My profile</a>
+            <button class="btnLogin-popup">Log out</button>
+        </nav>
+    </header>
+    <input type="radio" name="Photos" id="check1" checked>
+    <input type="radio" name="Photos" id="check2">
+    <input type="radio" name="Photos" id="check3">
+    <input type="radio" name="Photos" id="check4">
+    <input type="radio" name="Photos" id="check5">
+    <div class="container">
+         <h1>Gallery</h1>
+         <div class="content">
+            <h3>Our collection</h3>
+            <a href="Gallery1.html">All Images</a>
+            <a href="Sunset.html">Sunset</a>
+            <a href="Scene.html">Scenes</a>
+            <a href="Flower.html">Flowers</a>
+            <a href="Insects.html">Insects</a>
+         </div>
+         <br><br>
+         <div class="wrapper">
+
+            <div class="card">
+                <img src="5.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Hills</h4>
+                    <p><i class='bx bxs-camera' ></i> Shahil<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Those hill have symphony<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="6.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flamboyant Skies</h4>
+                    <p><i class='bx bxs-camera' ></i> Ritika<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Color is a power which directly influences the soul.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>       
+    
+            <div class="card">
+                <img src="7.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Mornings</h4>
+                    <p><i class='bx bxs-camera' ></i> Nisha<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>When you arise in the morning, think of what a precious privilege it is to be alive, to breathe, to think, to enjoy, to love<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            
+            
+            <div class="card">
+                <img src="14.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Railroads</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>The only thing that stands between you and your dream is the will to try and the belief that it is actually possible<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="15.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Lanes</h4>
+                    <p><i class='bx bxs-camera' ></i> Ram<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>he more I run, the more I like it, and the more I like myself<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+    
+            <div class="card">
+                <img src="18.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>The colours</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>
+                        Whatever I was doing, even when I was at school, I never repressed anything that I felt.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+            <div class="card">
+                <img src="19.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Those days</h4>
+                    <p><i class='bx bxs-camera' ></i> Ritika<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>
+                        Over every mountain there is a path, although it may not be seen from the valley<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            
+    
+            <div class="card">
+                <img src="24.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>The Dawn</h4>
+                    <p><i class='bx bxs-camera' ></i> Nisha<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>A sunrise is Nature telling you that it's time to cherish another day on Earth.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="26.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Greens</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Every sunset is also a sunrise<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="25.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>The colours</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>It's a new day....<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="28.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Clouds</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Every cloud has its silver lining but it is sometimes a little difficult to get it to the mint<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="29.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Clouds and rains</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>There's a bright spot in every dark cloud.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+        
+            <div class="card">
+                <img src="40.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Sky is Flamboyant</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>When the sky turns into a masterpiece.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="57.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Hills</h4>
+                    <p><i class='bx bxs-camera' ></i> Shahil<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Those hill have symphony<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+    
+            <div class="card">
+                <img src="59.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Hills</h4>
+                    <p><i class='bx bxs-camera' ></i> Shahil<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Those hill have symphony<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+            <div class="card">
+                <img src="61.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Hibiscus</h4>
+                    <p><i class='bx bxs-camera' ></i> Nisha<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>The flower doesn't dream of the bee.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="73.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Dawn</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>The light which puts out our eyes is darkness to us. Only that day dawns to which we are awake.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="74.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Dawn</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>The light which puts out our eyes is darkness to us. Only that day dawns to which we are awake.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="75.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Dawn</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>The light which puts out our eyes is darkness to us. Only that day dawns to which we are awake.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="76.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Autumn</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Autumn carries more gold in its pocket than all the other seasons<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="77.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Autumn</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Autumn carries more gold in its pocket than all the other seasons<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="78.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Autumn</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Autumn carries more gold in its pocket than all the other seasons<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="79.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Clouds and Sky</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Every cloud has its silver lining but it is sometimes a little difficult to get it to the mint.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="85.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Blues and bright</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Every tree plotted here is a plan of god.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="86.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Streams</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>The water is so pure and cold that it is a delight to drink it, and the sound of it as it falls and splashes is music to the ear.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div> 
+            
+            <div class="card">
+                <img src="87.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Streams</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Channeling my inner serenity with this fountain view.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+    
+            <div class="card">
+                <img src="88.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Streams</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Channeling my inner serenity with this fountain view.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+            <div class="card">
+                <img src="90.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Dusk</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>The beginning and ending is all right here.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="99.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Rainbow</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Bow of rain is a rainbow.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="91.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Dusk</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>The beginning and ending is all right here.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+            <div class="card">
+                <img src="92.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Dusk</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>The beginning and ending is all right here.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+    
+            
+    
+        </div>
+        
+    </body>
+    </html>
+    
+    
+

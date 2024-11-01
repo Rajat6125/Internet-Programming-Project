@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="logoim.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="example.css" media=”screen” />
+    <title>Kunjal: Contacts</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family:tahoma;
+        }
+        body{
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url(Contact.jpg) no-repeat;
+            background-size:cover;
+            background-position:center;
+        }
+        header{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            padding: 20px 100px;
+            background: rgba(2, 2, 40, 0.596);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+        .logo{
+            font-size: 2em;
+            color:#fff;
+            user-select: none;
+        }
+        .navigation a{
+            position: relative;
+            font-size: 1.1em;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 40px;
+            
+        }
+        .navigation a::after{
+            content:'';
+            position: absolute;
+            left:0;
+            bottom: -6px;
+            width:100%;
+            height:3px;
+            background:#fff;
+            border-radius: 5px;
+            transform-origin: right;
+            transform: scalex(0);
+            transition: transform .5s;
+        }
+        .navigation a:hover::after{
+            transform-origin: left;
+            transform: scalex(1);
+        }
+        
+        .sign .btnLogin-popup{
+            width:100px;
+            height: 50px;
+            background:transparent;
+            border:2px solid #fbfbfb;
+            outline: none;
+            border-radius: 6px;
+            cursor:pointer;
+            font-size:1.1em;
+            color:#fff;
+            font-weight: 500;
+            transition: .5s;
+            padding-left: 0%;
+            /* position: relative;
+            font-size: 1.1em;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500; */
+
+
+        }
+        .sign .btnLogin-popup:hover{
+            background: #fff;
+            color:#162938;
+        }
+
+
+        .navigation a.sign::after{
+            content:'';
+            position: absolute;
+            left:0;
+            bottom: -6px;
+            width:100%;
+            height:3px;
+            background:#e5000000;
+            
+        }
+        .navigation a.sign:hover::after{
+            transform-origin: left;
+            transform: scalex(1);
+        }
+        .content{
+            display: flex;
+            justify-content: space-between;
+            position:absolute;
+            top:350px;
+            left:270px;
+            
+        }
+        .m1{
+            background-color: white;
+            margin-right: 40px;
+            height:210px;
+            width:300px;
+            border-radius: 20px;
+            align-items: center;
+
+        }
+        .m1 h3{
+            text-align: center;
+            margin-top: 8px;
+        }
+        .m1 p{
+            text-align: center;
+            text-decoration: none;
+        }
+        .m1 p a{
+            text-align: center;
+            text-decoration: none;
+        }
+        .m1 i{
+            font-size: 90px;
+            margin-top: 8px;
+        }
+        .m1 i:hover{
+            color: rgb(79, 49, 49);
+            margin-top: 8px;
+        }
+        .info{
+            background-color: rgba(178, 202, 204, 0.667);
+            width:100%;
+            height:250px;
+            align-items: center;
+            margin-top: 150px;
+        }
+        .info h3{
+            font-size: 60px;
+            margin-left: 20px;
+        }
+        .info p{
+            font-size:20px;
+            margin-left: 20px;
+        }
+        .info{
+            padding:40px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo0.png" width="200px"></h2>
+        <nav class="navigation">
+            <a href="Home.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="Login.html">Login</a>
+            <a href="Register.html" class="sign"><button class="btnLogin-popup">Sign in</button></a>
+            
+        </nav>
+        
+    </header>
+    <div class="info">
+        <h3>Get in touch</h3>
+        <p>Want to get in touch? We'd love to hear from you.<br> Here's how you can reach us...</p>
+        <p></p>
+    </div>
+    <div class="content">
+        <div class="m1">
+            <center><i class='bx bxs-envelope' ></i></center>
+            <h3>Email us: </h3>
+            <p><a href="mailto:thebloomingkunjal6313@gmail.com">thebloomingkunjal6313@gmail.com</a></p>
+            <p>Interested in Kunjal? Just email us and explore and enquire more about.</p>
+            
+        </div>
+        <div class="m1">
+            <center><i class='bx bxl-instagram-alt' ></i></center>
+            <h3>Follow us</h3>
+            <p><a href="https://www.instagram.com/shandilya_ptp/" target="_blank">shandilya_ptp</a>
+            </p>
+            <p>Follow our instagram page, to get latest updates and explore most celebrated pictures</p>
+        </div>
+        <div class="m1">
+            <center><i class='bx bxl-telegram' ></i></center>
+            <h3>Join us on telegram: </h3>
+            <p><a href="https://t.me/your_username" class="telegram-link" target="_blank"></a></p>
+            <p>Our Blooming Kunjal</p>
+            
+        </div>
+    </div>
+</body>
+</html>

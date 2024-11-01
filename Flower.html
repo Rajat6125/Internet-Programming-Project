@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="logoim.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="example.css" media=”screen” />
+    <title>Kunjal: Home</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family:tahoma;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url(00.00.jpg) no-repeat;
+            background-size:cover;
+            background-position:center;
+        }
+        header{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            padding: 20px 100px;
+            background: rgba(2, 2, 40, 0.596);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+        .logo{
+            font-size: 2em;
+            color:#fff;
+            user-select: none;
+        }
+        .navigation a{
+            position: relative;
+            font-size: 1.1em;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 40px;
+        }
+        .navigation a::after{
+            content:'';
+            position: absolute;
+            left:0;
+            bottom: -6px;
+            width:100%;
+            height:3px;
+            background:#fff;
+            border-radius: 5px;
+            transform-origin: right;
+            transform: scalex(0);
+            transition: transform .5s;
+        }
+        .navigation a:hover::after{
+            transform-origin: left;
+            transform: scalex(1);
+
+        }
+        .navigation .btnLogin-popup{
+            width:100px;
+            height: 50px;
+            background:transparent;
+            border:2px solid #fff;
+            outline: none;
+            border-radius: 6px;
+            cursor:pointer;
+            font-size:1.1em;
+            color:#fff;
+            font-weight: 500;
+            margin-left:40px;
+            transition: .5s;
+        }
+        .navigation .btnLogin-popup:hover{
+            background: #fff;
+            color:#162938;
+        }
+        .kunjal{
+            color:#fff;
+        }
+        .kunjal .heading h1{
+            font-size: 120px;
+            font-family: Book Antiqua;
+            text-align: center;
+        }
+        .kunjal .tagline p{
+            font-size: 40px;
+            font-family: vivaldi;
+            text-align: center;
+        }
+        
+        input{
+            display: none;
+        }
+        .container{
+            width:100%;
+            text-align:center ;
+        }
+        h1{
+            padding-top: 150px;
+            font-weight: normal;
+            font-size: 35px;
+            position:relative;
+            margin:40px 0;
+        }
+
+        h1::before{
+            content:'';
+            position:absolute;
+            width: 100px;
+            height:3px;
+            background-color: crimson;
+            bottom:-10px;
+            left:50%;
+            transform:translateX(-50%);
+            animation:animate 4s linear infinite;
+        }
+        @keyframes animate{
+            0%{
+                width:100px;
+            }
+            50%{
+                width:200px;
+            }
+            100%{
+                width:100px;
+            }
+        }
+        .content{
+            background-color: rgb(243,243,243);
+            width:90%;
+            margin:0 auto 20px auto;
+            height:60px;
+            display: flex;
+            align-items: center;
+            border-radius:5px;
+            box-shadow: 3px 3px 5px lightgray  ;
+    
+        }
+        
+        h3{
+            height:100%;
+            background-color: rgb(228,228,228);
+            line-height: 60px;
+            padding:0 50px;
+            color:rgb(11, 1, 44);
+        }
+        h4{
+            font-size: 20px;
+            /* line-height: 60px; */
+            text-align: left;
+            color:white;
+
+        }
+        p{
+            justify-content: space-between;
+            text-align: left;
+        }
+        .content{
+            display: inline-block;
+            height:100%;
+            padding:0 5px;
+            margin:0 10px;
+            line-height:60px;
+            font-size: 18px;
+            color:grey;
+            cursor:pointer;
+            transition: color.5s;
+        }
+        .content a{
+            text-decoration: none;
+            display: inline-block;
+            height:100%;
+            padding:0 5px;
+            margin:0 10px;
+            line-height:60px;
+            font-size: 18px;
+            color:grey;
+            cursor:pointer;
+            transition: color.5s;
+            
+        }
+        
+
+        .content a:hover{
+            color:black;
+        }
+
+
+
+
+
+
+
+        .wrapper{
+            justify-content: space-around;
+            width: 90%;
+            margin:auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap:30px;
+        }
+
+
+        .card{
+            width:280px;
+            height: 360px;
+            padding:2rem 1rem;
+            background:#fff;
+            position: relative;
+            display: flex;
+            align-items:flex-end;
+            box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+            transition: 0.5s ease-in-out;
+        }
+        .card:hover{
+            transform: translateY(20px);
+
+        }
+        .card:before{
+            content:"";
+            position:absolute;
+            top:0;
+            left:0;
+            display: block;width:100%;
+            height:100%;
+            background: linear-gradient(to bottom, rgba(0,176,155,0.5),rgba(150,201,61,1));
+            z-index: 2;
+            transition: 0.5s all;
+            opacity:0;
+        }
+        .card:hover:before{
+            opacity: 1;
+        }
+        .card img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        .card .info{
+            position: relative;
+            z-index:3;
+            color:#fff;
+            opacity:0;
+            transform: translate(30px);
+            transition: 0.5s all;
+        }
+        .card:hover .info{
+            opacity: 1;
+            transform: translateY(0px);
+        }
+        .card .info h1{
+            margin:0;
+        }
+        .card .info p{
+            letter-spacing: 1px;
+            font-size: 15px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+        }
+        .card .info .btn{
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: #fff;
+            color:#000;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.4s ease-in-out;
+        }
+        .card .info .btn:hover{
+            box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo.png" width="300px"></h2>
+        <nav class="navigation">
+            <a href="Home.html">Home</a>
+            <a href="Contacts.html">Contact</a>
+            <a href="About.html">Updates</a>
+            <a href="Login.html">My profile</a>
+            <button class="btnLogin-popup">Log out</button>
+        </nav>
+    </header>
+    <input type="radio" name="Photos" id="check1" checked>
+    <input type="radio" name="Photos" id="check2">
+    <input type="radio" name="Photos" id="check3">
+    <input type="radio" name="Photos" id="check4">
+    <input type="radio" name="Photos" id="check5">
+    <div class="container">
+         <h1>Gallery</h1>
+         <div class="content">
+            <h3>Our collection</h3>
+            <a href="Gallery1.html">All Images</a>
+            <a href="Sunset.html">Sunset</a>
+            <a href="Scene.html">Scenes</a>
+            <a href="Flower.html">Flowers</a>
+            <a href="Insects.html">Insects</a>
+         </div>
+         <br><br>
+         <div class="wrapper">
+            <div class="card">
+                <img src="1.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>The Palash</h4>
+                    <p><i class='bx bxs-camera' ></i> Rajat<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-pencil'></i>The earth laughs in flowers<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Like</a>
+                </div>
+            </div>
+    
+
+            <div class="card">
+                <img src="2.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>The Palash</h4>
+                    <p><i class='bx bxs-camera' ></i>Rajat<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-pencil'></i>A flower does not think of competing with the flower next to it. It just blooms.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="3.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Blooming palash</h4>
+                    <p><i class='bx bxs-camera' ></i> Rajat<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-pencil'></i>The earth laughs in flowers<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="4.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Palash</h4>
+                    <p><i class='bx bxs-camera' ></i> Rajat<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-11221<br><i class='bx bx-pencil'></i>The earth laughs in flowers<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="9.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Harvest</h4>
+                    <p><i class='bx bxs-camera' ></i> R.Shahil<br><i class='bx bx-map' ></i>Mandi,Himachal Pradesh<br><i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Every cloud has its silver lining but it is sometimes a little difficult to get it to the mint<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="16.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Lotus</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal Nair<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>In the muddy waters, beauty begins to bloom.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+            <div class="card">
+                <img src="17.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Greens</h4>
+                    <p><i class='bx bxs-camera' ></i> Rajat<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>
+                        Remember, green's your color. You are spring<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="20.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flower</h4>
+                    <p><i class='bx bxs-camera' ></i> Nisha<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>A flower does not use words to announce its arrival to the world; it just blooms<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="21.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Tiny</h4>
+                    <p><i class='bx bxs-camera' ></i> Rajat<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>In joy or sadness, flowers are our constant friends.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="23.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>The colours</h4>
+                    <p><i class='bx bxs-camera' ></i> Ritika<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Gardens and flowers have a way of bringing people together, drawing them from their homes.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+                
+            <div class="card">
+                <img src="31.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Fruits from hills</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>The roots of education are bitter, but the fruit is sweet.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="32.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flowers</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>A garden to walk in and immensity to dream in—what more could he ask? <br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="33.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flowers</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>A garden to walk in and immensity to dream in—what more could he ask? <br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="34.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Greens</h4>
+                    <p><i class='bx bxs-camera' ></i> Nisha<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>I believe a leaf of grass is no less than the journey-work of the stars<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="36.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Greens</h4>
+                    <p><i class='bx bxs-camera' ></i> Nisha<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>I believe a leaf of grass is no less than the journey-work of the stars<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="37.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Greens</h4>
+                    <p><i class='bx bxs-camera' ></i> Nisha<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>I believe a leaf of grass is no less than the journey-work of the stars<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="38.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Greens</h4>
+                    <p><i class='bx bxs-camera' ></i> Nisha<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>I believe a leaf of grass is no less than the journey-work of the stars<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="39.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Greens</h4>
+                    <p><i class='bx bxs-camera' ></i> Nisha<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>I believe a leaf of grass is no less than the journey-work of the stars<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="41.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Herbs</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Ounce for ounce, herbs and spices have more antioxidants than any other food group<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="42.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Budding fruits</h4>
+                    <p><i class='bx bxs-camera' ></i> Ritika<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Praised be You, my Lord, through our Sister, Mother Earth, who sustains and governs us, producing varied fruits with coloured flowers and herbs.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="44.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Nature</h4>
+                    <p><i class='bx bxs-camera' ></i> Rajat<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Nature does not hurry, yet everything is accomplished<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+            <div class="card">
+                <img src="46.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Trees</h4>
+                    <p><i class='bx bxs-camera' ></i> Ritika<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Trees are poems that the earth writes upon the sky.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+
+            
+    
+            <div class="card">
+                <img src="47.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Trees</h4>
+                    <p><i class='bx bxs-camera' ></i> Ritika<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Trees are poems that the earth writes upon the sky.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+
+            
+    
+            <div class="card">
+                <img src="48.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Trees</h4>
+                    <p><i class='bx bxs-camera' ></i> Ritika<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Trees are poems that the earth writes upon the sky.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+            
+    
+            <div class="card">
+                <img src="49.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Feathers</h4>
+                    <p><i class='bx bxs-camera' ></i> Ritika<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Birds of a feather flock together<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+    
+            <div class="card">
+                <img src="51.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Nature</h4>
+                    <p><i class='bx bxs-camera' ></i> Rajat<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Nature does not hurry, yet everything is accomplished<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+    
+            <div class="card">
+                <img src="50.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Dandelion</h4>
+                    <p><i class='bx bxs-camera' ></i> Ritika<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Life is a collection of fleeting moments, like a dandelion's petals in the breeze.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+    
+            <div class="card">
+                <img src="53.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flowers</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>A garden to walk in and immensity to dream in—what more could he ask? <br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+    
+            <div class="card">
+                <img src="54.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flowers</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>A garden to walk in and immensity to dream in—what more could he ask? <br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="52 (2).jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flowers</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>A garden to walk in and immensity to dream in—what more could he ask? <br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="55.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flowers</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>A garden to walk in and immensity to dream in—what more could he ask? <br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+            <div class="card">
+                <img src="56.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Dandelion</h4>
+                    <p><i class='bx bxs-camera' ></i> Ritika<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Life is a collection of fleeting moments, like a dandelion's petals in the breeze.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+    
+
+    
+    
+            <div class="card">
+                <img src="58.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flowers</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>A garden to walk in and immensity to dream in—what more could he ask? <br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="61.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Hibiscus</h4>
+                    <p><i class='bx bxs-camera' ></i> Nisha<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>The flower doesn't dream of the bee.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="67.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Dandellion</h4>
+                    <p><i class='bx bxs-camera' ></i> Nisha<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>This morning the Laburnum looks back at me, staid and sombre.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            
+            <div class="card">
+                <img src="71.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Autumn</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Autumn carries more gold in its pocket than all the other seasons<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="72.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Autumn</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Autumn carries more gold in its pocket than all the other seasons<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="80.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Greens and only</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Those green bushes are still fresh and lush.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="81.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Yellow and Green</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Green is always beautiful,but the green with yellow is flamboyant.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="82.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Drops</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Tiny droplets over those tiny leafs.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="83.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Drops</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Tiny droplets over those tiny leafs.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="84.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Drops</h4>
+                    <p><i class='bx bxs-camera' ></i> Kamal<br><i class='bx bx-map' ></i>Himachal Pradesh<br><i class='bx bx-bug'></i>R-10921<br><i class='bx bx-pencil'></i>Tiny droplets over those tiny leafs.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="89.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flowers</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>A garden to walk in and immensity to dream in—what more could he ask? <br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+            <div class="card">
+                <img src="93.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Mangoes</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Mango season is the happiest time of the year.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+    
+            <div class="card">
+                <img src="94.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Mangoes</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Mango is the crown jewel of fruits.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="98.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flowers</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Flowers have spoken to me more than I can tell in written words.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="100.jpg" width="360px" height="280px">
+                <div class="info">
+                    <h4>Flowers</h4>
+                    <p><i class='bx bxs-camera' ></i> Raghav<br>
+                        <i class='bx bx-map' ></i>
+                        Himachal Pradesh<br>
+                        <i class='bx bx-bug'></i>S-14921<br><i class='bx bx-pencil'></i>Flowers have spoken to me more than I can tell in written words.<br><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i><i class='bx bxs-heart' ></i></p>
+                    <a href="#" class="btn">Comment</a>
+                </div>
+            </div>
+            
+    
+    
+            
+    
+            
+            
+    
+            
+    
+        </div>
+        
+    </body>
+    </html>
+    
+    
+

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="logoim.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="example.css" media=”screen” />
+    <title>Kunjal: Sign in</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family:tahoma;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 110vh;
+            background: url(register.jpg) no-repeat;
+            background-size:cover;
+            background-position:center;
+        }
+        header{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            padding: 20px 100px;
+            background: rgba(2, 2, 40, 0.596);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+        .logo{
+            font-size: 2em;
+            color:#fff;
+            user-select: none;
+        }
+        .navigation a{
+            position: relative;
+            font-size: 1.1em;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 40px;
+            
+        }
+        .navigation a::after{
+            content:'';
+            position: absolute;
+            left:0;
+            bottom: -6px;
+            width:100%;
+            height:3px;
+            background:#fff;
+            border-radius: 5px;
+            transform-origin: right;
+            transform: scalex(0);
+            transition: transform .5s;
+        }
+        .navigation a:hover::after{
+            transform-origin: left;
+            transform: scalex(1);
+        }
+        
+        .sign .btnLogin-popup{
+            width:100px;
+            height: 50px;
+            background:transparent;
+            border:2px solid #fbfbfb;
+            outline: none;
+            border-radius: 6px;
+            cursor:pointer;
+            font-size:1.1em;
+            color:#fff;
+            font-weight: 500;
+            transition: .5s;
+            padding-left: 0%;
+            /* position: relative;
+            font-size: 1.1em;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500; */
+
+
+        }
+        .sign .btnLogin-popup:hover{
+            background: #fff;
+            color:#162938;
+        }
+
+
+        .navigation a.sign::after{
+            content:'';
+            position: absolute;
+            left:0;
+            bottom: -6px;
+            width:100%;
+            height:3px;
+            background:#e5000000;
+            
+        }
+        .navigation a.sign:hover::after{
+            transform-origin: left;
+            transform: scalex(1);
+        }
+
+
+
+
+        .kunjal{
+            color:#fff;
+        }
+        .kunjal .heading h1{
+            font-size: 120px;
+            font-family: Book Antiqua;
+            text-align: center;
+        }
+        .kunjal .tagline p{
+            font-size: 40px;
+            font-family: vivaldi;
+            text-align: center;
+        }
+        .wrapper{
+            width: 700px;
+            background: rgba(128, 0, 0, 0.167);
+            border:2px solid rgba(255,255,255.2);
+            box-shadow: 0 0 10px rgba(0,0,0,.2);
+            backdrop-filter: blur(60px);
+            border-radius: 10px;
+            color:#fff;
+            padding: 40px 35px 55px;
+        }
+        .wrapper h1{
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .wrapper .input-box{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap:wrap;
+
+        }
+        .input-box .input-field{
+            position: relative;
+            width:48%;
+            height:40px;
+            margin:13px 0;
+        }
+        .input-box .input-field input{
+            width: 100%;
+            height:100%;
+            background: transparent;
+            border:2px solid rgba(255,255,255,.2);
+            outline:none;
+            font-size:16px;
+            color:#ffffff;
+            border-radius: 6px;
+            padding: 15px 15px 15px 40px;
+        }
+        .input-box .input-field input::placeholder{
+            color:#ffffff;
+        }
+
+        .input-box .input-field i{
+            position: absolute;
+            left:15px;
+            top:50%;
+            transform: translateY(-50%);
+            font-size: 20px; 
+        }
+        .wrapper label{
+            display: inline-block;
+            font-size:14.5px;
+            margin:10px 0 23px;
+        }
+        .wrapper label input{
+            accent-color: #030303;
+            margin-right:5px;
+        }
+        .wrapper .btn{
+            width: 100%;
+            height:45px;
+            background: #fff;
+            border:none;
+            outline:none;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+            cursor: pointer;
+            font-size:16px;
+            color:#333;
+            font-weight: 600;
+
+
+        }
+        .wrapper .btn:hover{
+            background-color: black;
+            color:white;
+        }
+        a{
+            text-decoration: none;
+            color:red;
+        }
+
+        </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo"><img src="logo0.png" width="200px"></h2>
+        <nav class="navigation">
+            <a href="Home.html">Home</a>
+            <a href="Contacts.html">Contact</a>
+            <a href="About.html">About</a>
+            
+        </nav>
+        
+    </header>
+    <div class="wrapper">
+        <form action="">
+            <h1>Sign in</h1>
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="text" placeholder="Full name" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" placeholder="Username" required>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+
+                <div class="input-field">
+                    <input type="email" placeholder="Email" required>
+                    <i class='bx bx-envelope' ></i>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" placeholder="Phone number">
+                    <i class='bx bxs-camera' ></i>
+                </div>
+
+                <div class="input-field">
+                    <input type="password" placeholder="Password" required>
+                    <i class='bx bxs-lock' ></i>
+                </div>
+
+                <div class="input-field">
+                    <input type="password" placeholder="confirm Password" required>
+                    <i class='bx bx-lock-open-alt'></i>
+                </div>
+                
+                <div class="input-field">
+                    <input type="text" placeholder="Date of birth">
+                    <i class='bx bx-calendar' ></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="class" list="class list" placeholder="Photography Genera">
+                    <datalist id="class list">
+                    <option value="Landscape painting"></option>
+                    <option value="Macro Photography"></option>
+                    <option value="Wildlife Photography"></option>
+                    <option value="Sunset Photography"></option>
+                    <option value="Storm Photography"></option>
+                    <option value="Aerial Photography"></option>
+                    <option value="Underwater"></option>
+                    <option value="Flower Photography"></option>
+                    <option value="Plant"></option>
+                    <option value="Cloudscape Photography"></option>
+                    <option value="Water Photography"></option>
+                    <option value="Other"></option>
+                    <option value="Random sketches"></option>
+                    <option value="Miscellaneous"></option>
+                    <option value="None" selected>None</option></optgroup>
+                    </datalsit>
+                    <i class='bx bxs-camera' ></i>
+                </div>
+                
+
+            </div>
+
+            <label><input type="checkbox" required>I hereby declare that the above information provided is true to the best of my knoweldge.</label>
+        </form>
+            <a href="Login.html"><button type="submit" class="btn">Register</button></a>
+        
+    </div>
+</body>
+</html>
